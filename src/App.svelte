@@ -3,9 +3,9 @@
 
   let coAuthors = [{ username: "ghost" }];
 
-  let commitMessage = [];
+  let coAuthorSnippets = [];
 
-  $: snippet = commitMessage.join("<br>");
+  $: commitMessageSnippet = coAuthorSnippets.join("<br>");
 
   function add() {
     coAuthors = coAuthors.concat([{ username: "" }]);
@@ -15,22 +15,20 @@
     coAuthors = [{ username: "" }];
   }
 
-  function remove(coAuthor) {
-    coAuthors = coAuthors.filter((author) => author !== coAuthor);
+  function remove(selectedCoAuthor) {
+    coAuthors = coAuthors.filter((coAuthor) => coAuthor !== selectedCoAuthor);
   }
 
   function submit() {
     Promise.all(client.getAuthors(coAuthors)).then((values) => {
-      commitMessage = values.map((value) => {
-        let username = value.data.login;
-        let id = value.data.id;
-        return `Co-authored-by: ${username} <${id}+${username}@users.noreply.github.com>`;
+      coAuthorSnippets = values.map(({ data: { login, id } }) => {
+        return `Co-authored-by: ${login} <${id}+${login}@users.noreply.github.com>`;
       });
     });
   }
 
   function copyToClipboard() {
-    navigator.clipboard.writeText(commitMessage.join("\n"));
+    navigator.clipboard.writeText(coAuthorSnippets.join("\n"));
   }
 
   const client = (() => {
@@ -39,7 +37,6 @@
     return {
       getAuthors: (list) => {
         return list.map((author) => {
-          console.log(authors);
           return (authors[author.username] =
             authors[author.username] ??
             octokit.request("GET /users/{username}", {
@@ -73,12 +70,12 @@
     <button on:click={submit}> Submit </button>
   </div>
 
-  {#if commitMessage}
+  {#if coAuthorSnippets}
     <code
-      id="co-author"
+      id="commit-message-snippet"
       on:click={copyToClipboard}
       contenteditable="false"
-      bind:innerHTML={snippet}
+      bind:innerHTML={commitMessageSnippet}
     />
   {/if}
 </main>

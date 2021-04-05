@@ -30,7 +30,7 @@
   }
 
   function copyToClipboard() {
-    navigator.clipboard.writeText(snippet);
+    navigator.clipboard.writeText(commitMessage.join("\n"));
   }
 
   const client = (() => {
@@ -77,7 +77,7 @@
     <code
       id="co-author"
       on:click={copyToClipboard}
-      contenteditable="true"
+      contenteditable="false"
       bind:innerHTML={snippet}
     />
   {/if}

@@ -1,7 +1,11 @@
 <script>
+	import { Octokit } from "@octokit/core";
+
 	let coAuthors = [
 		{ username: "ghost" }
 	]
+
+	let commitMessage = ""
 
 	function add() {
 		coAuthors = coAuthors.concat([{ username: "" }])
@@ -15,11 +19,36 @@
 		coAuthors = coAuthors.filter(author => author !== coAuthor)
 	}
 
+	function submit() {
+		var t0 = performance.now()
+		Promise.all(client.getAuthors(coAuthors))
+			.then(values => {
+				commitMessage = values.map(value => {
+					let username = value.data.login
+					let id = value.data.id
+					return `Co-authored-by: ${username} <${id}+${username}@users.noreply.github.com>`
+				}).join("\n")
+			}) 
+			var t1 = performance.now()
+			console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.")e
+	}
+
 	function copyToClipboard() {
 		navigator.clipboard.writeText(snippet)
 	}
 
-	$: commitMessage = coAuthors.filter(author => author.username.length > 0).map(author => `Co-authored-by: ${author.username} &lt;${author.username}@users.noreply.github.com&gt;`).join("<br>")
+	const client = (() => {
+		const octokit = new Octokit();
+		const authors = new Map()
+		return {
+			getAuthors: (list) => {
+				return list.map(author => {
+					console.log(authors)
+					return (authors[author.username] = authors[author.username] ?? octokit.request('GET /users/{username}', {username: author.username}))
+				})
+			}
+		}
+	})()
 </script>
 
 <main>
@@ -44,6 +73,9 @@
 		</button>
 		<button on:click={reset}>
 			Reset
+		</button>
+		<button on:click={submit}>
+			Submit
 		</button>
 	</div>
 

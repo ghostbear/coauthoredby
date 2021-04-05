@@ -1,10 +1,26 @@
 <script>
-	export let name;
+	export let username;
+	$: snippet = `Co-authored-by: ${username} <${username}@users.noreply.github.com>`
+
+	function copyToClipboard() {
+		navigator.clipboard.writeText(snippet)
+	}
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<h1>Co-authored</h1>
+	<p>Simple tool to give credit to users who help you with a commit on GitHub</p>
+	<br>
+	<b>What is the username of the co-author?</b>
+	<div>
+		<input bind:value={username} />	
+	</div>
+	
+	{#if username}
+		<code id="co-author" on:click={copyToClipboard}>
+			{snippet}
+		</code>
+	{/if}
 </main>
 
 <style>

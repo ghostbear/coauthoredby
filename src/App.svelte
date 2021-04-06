@@ -1,11 +1,10 @@
 <script>
   import { Octokit } from "@octokit/core";
+  import CommitMessage from "./CommitMessage.svelte";
 
   let coAuthors = [{ username: "ghost" }];
 
   let coAuthorSnippets = [];
-
-  $: commitMessageSnippet = coAuthorSnippets.join("<br>");
 
   function add() {
     coAuthors = coAuthors.concat([{ username: "" }]);
@@ -13,6 +12,7 @@
 
   function reset() {
     coAuthors = [{ username: "" }];
+    coAuthorSnippets = [];
   }
 
   function remove(selectedCoAuthor) {
@@ -25,10 +25,6 @@
         return `Co-authored-by: ${login} <${id}+${login}@users.noreply.github.com>`;
       });
     });
-  }
-
-  function copyToClipboard() {
-    navigator.clipboard.writeText(coAuthorSnippets.join("\n"));
   }
 
   const client = (() => {
@@ -59,7 +55,7 @@
     {#each coAuthors as coAuthor}
       <div class="co-author">
         <input placeholder="username" bind:value={coAuthor.username} />
-        <button on:click={remove(coAuthor)}> Remove </button>
+        <button on:click={remove(coAuthor)}> ❌ </button>
       </div>
     {/each}
   </div>
@@ -70,22 +66,20 @@
     <button on:click={submit}> Submit </button>
   </div>
 
-  {#if coAuthorSnippets}
-    <code
-      id="commit-message-snippet"
-      on:click={copyToClipboard}
-      contenteditable="false"
-      bind:innerHTML={commitMessageSnippet}
-    />
-  {/if}
+  <CommitMessage coAuthors={coAuthorSnippets} />
 </main>
 
 <style>
   main {
     text-align: center;
     padding: 1em;
-    max-width: 240px;
+    max-width: 640px;
     margin: 0 auto;
+  }
+
+  .co-author {
+    display: flex;
+    justify-content: center;
   }
 
   h1 {
@@ -95,9 +89,37 @@
     font-weight: 100;
   }
 
-  @media (min-width: 640px) {
+  @media (max-width: 640px) {
     main {
       max-width: none;
+    }
+
+    h1 {
+      font-size: 4em;
+    }
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 3em;
+    }
+  }
+
+  @media (max-width: 380px) {
+    h1 {
+      font-size: 2.75em;
+    }
+  }
+
+  @media (max-width: 320px) {
+    h1 {
+      font-size: 2.5em;
+    }
+  }
+
+  @media (max-width: 280px) {
+    h1 {
+      font-size: 2em;
     }
   }
 </style>

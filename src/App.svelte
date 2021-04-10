@@ -45,7 +45,7 @@
 </script>
 
 <main>
-  <h1>Co-authored</h1>
+  <h1>Co-authored-by</h1>
   <p>
     Simple tool to generate snippets for commit messages to easily give credit to users who help you with a commit on GitHub
   </p>

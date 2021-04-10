@@ -4,12 +4,14 @@
 
   function copyToClipboard() {
     navigator.clipboard.writeText(coAuthors.join("\n"));
+    alert("Snippet copied to clipboard")
   }
 </script>
 
 {#if commitMessage}
   <div class="commitMessage">
     <h2>Message snippet</h2>
+    <i>Click to copy to clipboard</i>
     <div class="codeBlock">
       <code
       id="CommitMessage"

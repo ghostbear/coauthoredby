@@ -47,13 +47,13 @@
 <main>
   <h1>Co-authored</h1>
   <p>
-    Simple tool to give credit to users who help you with a commit on GitHub
+    Simple tool to generate snippets for commit messages to easily give credit to users who help you with a commit on GitHub
   </p>
   <br />
   <b>What is the username of the co-author(s)?</b>
-  <div class="co-authors">
+  <div class="coAuthors">
     {#each coAuthors as coAuthor}
-      <div class="co-author">
+      <div class="coAuthor">
         <input placeholder="username" bind:value={coAuthor.username} />
         <button on:click={remove(coAuthor)}> ❌ </button>
       </div>

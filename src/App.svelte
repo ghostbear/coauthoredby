@@ -65,13 +65,22 @@
     <button on:click={reset}> Reset </button>
     <button on:click={submit}> Submit </button>
   </div>
+  <p>Click <b>submit</b> to generate snippet</p>
 
   <CommitMessage coAuthors={coAuthorSnippets} />
+
+  <p class="footer">
+    Made by <a href="https://github.com/ghostbear">ghostbear</a>
+  </p>
 </main>
 
 <style>
   main {
-    max-width: 1000px;
+    max-width: 720px;
     margin: 0 auto;
+  }
+
+  .footer {
+    margin-top: 1.75em;
   }
 </style>

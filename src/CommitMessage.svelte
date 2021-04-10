@@ -12,10 +12,9 @@
   <div class="commitMessage">
     <h2>Message snippet</h2>
     <i>Click to copy to clipboard</i>
-    <div class="codeBlock">
+    <div on:click={copyToClipboard} class="codeBlock">
       <code
       id="CommitMessage"
-      on:click={copyToClipboard}
       contenteditable="false"
       bind:innerHTML={commitMessage}
     />

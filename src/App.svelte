@@ -61,7 +61,7 @@
   </div>
 
   <div>
-    <button on:click={add}> Add new </button>
+    <button on:click={add}> Add </button>
     <button on:click={reset}> Reset </button>
     <button on:click={submit}> Submit </button>
   </div>
@@ -71,55 +71,7 @@
 
 <style>
   main {
-    text-align: center;
-    padding: 1em;
-    max-width: 640px;
+    max-width: 1000px;
     margin: 0 auto;
-  }
-
-  .co-author {
-    display: flex;
-    justify-content: center;
-  }
-
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
-  }
-
-  @media (max-width: 640px) {
-    main {
-      max-width: none;
-    }
-
-    h1 {
-      font-size: 4em;
-    }
-  }
-
-  @media (max-width: 480px) {
-    h1 {
-      font-size: 3em;
-    }
-  }
-
-  @media (max-width: 380px) {
-    h1 {
-      font-size: 2.75em;
-    }
-  }
-
-  @media (max-width: 320px) {
-    h1 {
-      font-size: 2.5em;
-    }
-  }
-
-  @media (max-width: 280px) {
-    h1 {
-      font-size: 2em;
-    }
   }
 </style>

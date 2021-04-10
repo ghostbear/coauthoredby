@@ -1,8 +1,5 @@
 <script>
-  export let coAuthors = [
-    "Co-authored-by: ghost <10137+ghost@users.noreply.github.com>",
-    "Co-authored-by: ghostbear <10137214+ghostbear@users.noreply.github.com>",
-  ];
+  export let coAuthors = [];
   $: commitMessage = coAuthors.join("<br>");
 
   function copyToClipboard() {
@@ -22,13 +19,4 @@
 {/if}
 
 <style>
-  .commitMessage {
-    margin: 0 auto;
-    width: max-content;
-    max-width: fit-content;
-    overflow-wrap: anywhere;
-    text-align: left;
-    padding: 1em;
-    background-color: #e2e2e2;
-  }
 </style>

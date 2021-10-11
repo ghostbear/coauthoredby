@@ -21,8 +21,8 @@
 
   function submit() {
     Promise.all(client.getAuthors(coAuthors)).then((values) => {
-      coAuthorSnippets = values.map(({ data: { login, id } }) => {
-        return `Co-authored-by: ${login} <${id}+${login}@users.noreply.github.com>`;
+      coAuthorSnippets = values.map(({ data: { name, login, id } }) => {
+        return `Co-authored-by: ${name ?? login} <${id}+${login}@users.noreply.github.com>`;
       });
     });
   }

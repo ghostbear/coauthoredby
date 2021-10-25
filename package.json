@@ -10,7 +10,7 @@
     "lint": "prettier --write --plugin-search-dir=. ."
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^21.0.0",
+    "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.5",
     "prettier": "^2.4.1",
     "prettier-plugin-svelte": "^2.4.0",

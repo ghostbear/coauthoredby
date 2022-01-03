@@ -23,6 +23,6 @@
   },
   "dependencies": {
     "@octokit/core": "^3.5.1",
-    "sirv-cli": "^1.0.14"
+    "sirv-cli": "^2.0.1"
   }
 }

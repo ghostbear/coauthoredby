@@ -22,7 +22,7 @@
     "svelte": "^3.46.4"
   },
   "dependencies": {
-    "@octokit/core": "^3.5.1",
+    "@octokit/core": "^3.6.0",
     "sirv-cli": "^2.0.2"
   }
 }

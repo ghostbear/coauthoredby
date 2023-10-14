@@ -3,8 +3,9 @@
   $: commitMessage = coAuthors.join("<br>");
 
   function copyToClipboard() {
-    navigator.clipboard.writeText(coAuthors.join("\n"));
-    alert("Snippet copied to clipboard")
+    navigator.clipboard.writeText(coAuthors.join("\n")).then(() => {
+        alert("Snippet copied to clipboard")
+      })
   }
 </script>
 

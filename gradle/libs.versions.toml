@@ -1,7 +1,7 @@
 [versions]
 
 androidx-material3Adaptive = "1.0.0"
-androidx-lifecycle = "2.11.0-beta01"
+androidx-lifecycle = "2.11.0"
 composeMultiplatform = "1.11.1"
 junit = "4.13.2"
 kotlin = "2.4.10"

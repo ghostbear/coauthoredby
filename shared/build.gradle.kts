@@ -10,11 +10,15 @@ plugins {
 
 kotlin {
     js {
+        // https://youtrack.jetbrains.com/issue/CMP-4906
+        binaries.executable()
         browser()
     }
 
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
+        // https://youtrack.jetbrains.com/issue/CMP-4906
+        binaries.executable()
         browser()
     }
 

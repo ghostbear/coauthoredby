@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="app_name">Co-authored-by</string>
+    <string name="app_description">Simple tool to generate snippets for commit messages to easily give credit to users who help you with a commit on GitHub</string>
+    <string name="question_co_authors">What is the name of the co-author(s)?</string>
+    <string name="error_with_message">Error: %1$s</string>
+    <string name="commit_message">Commit Message</string>
+    <string name="commit_message_copied">Copied to clipboard</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_reset">Reset</string>
+    <string name="action_generate">Generate</string>
+    <string name="action_copy">Copy</string>
+    <string name="action_cancel">Cancel</string>
+</resources>

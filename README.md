@@ -1,24 +1,18 @@
-# Co authored by
+# coauthoredby
 
-Is a simple tool to give credit to GitHub users who have help you with a commit. Try it out over at https://coauthoredby.netlify.app/
+Is a web app that builds the `Co-authored-by` trailer for your Git commit message. It gives credit to the GitHub users who helped with the commit. Enter the GitHub usernames, and the app creates the trailer in the format that GitHub accepts. Try it at https://ghostbear.me/coauthoredby/.
+
+## Build
+ 
+Run `./gradlew build`.
+
+The build writes the app files to `webApp/build/dist`.
 
 ## Develop
 
-Install the dependencies...
+To run the app in development mode:
 
-```bash
-cd svelte-app
-npm install
-```
+1. Run `./gradlew :webApp:jsDevelopmentRun`.
+2. Open the URL that Gradle prints.
 
-...then start [Rollup](https://rollupjs.org):
-
-```bash
-npm run dev
-```
-
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
-
-By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
-
-If you're using [Visual Studio Code](https://code.visualstudio.com/) we recommend installing the official extension [Svelte for VS Code](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode). If you are using other editors you may need to install a plugin in order to get syntax highlighting and intellisense.
+For the WebAssembly build, run `./gradlew :webApp:wasmJsDevelopmentRun` instead.

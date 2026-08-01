@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/*"
+  to = "https://ghostbear.me/coauthoredby/"
+  status = 301
+  force = true
